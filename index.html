@@ -56,39 +56,38 @@
     <nav id="navMenu">
       <ul>
         <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#booking" class="nav-cta"><i class="fa-solid fa-camera-retro"></i> Book A Shoot</a></li>
+        <li><a href="https://wa.me/" target="_blank" class="nav-cta"><i class="fa-brands fa-whatsapp"></i> Contact Us</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Main Dashboard Section -->
   <section class="hero-section" id="home">
-    <div class="hero-content">
-      <div class="hero-badge-pill">
-        <i class="fa-solid fa-aperture fa-spin" style="animation-duration: 9s;"></i> Premium Cinematic Production
+    <div class="hero-content" style="max-width: 820px; margin: 0 auto; text-align: center;">
+      <div class="hero-badge-pill" style="margin: 0 auto 24px;">
+        <i class="fa-solid fa-crown" style="color: #e5b364;"></i> Premium Visual Storytelling
       </div>
       <h1 class="hero-title">
         Capturing Moments, <br>
-        Directing <span class="highlight">Cinematic</span> Magic.
+        Crafting <span class="highlight">Cinematic</span> Magic.
       </h1>
-      <p class="hero-description">
-        Welcome to <strong>Aakar Films</strong>. From luxury pre-wedding shoots, dynamic fashion photography to full-scale cinematic film production — we bring timeless visual frames to life with studio-grade excellence.
+      <p class="hero-description" style="margin: 0 auto 34px;">
+        Welcome to <strong>Aakar Films</strong>. From luxury destination weddings and royal marriage rituals to high-fashion lookbooks and 8K commercial films — we bring timeless visual frames to life with studio-grade excellence.
       </p>
 
-      <div class="hero-actions">
-        <a href="#booking" class="btn-primary">
-          <i class="fa-solid fa-calendar-check"></i> Book Your Session
+      <div class="hero-actions" style="justify-content: center; margin-bottom: 45px;">
+        <a href="#gallery" class="btn-primary">
+          <i class="fa-solid fa-camera"></i> Explore Photo Gallery
         </a>
-        <a href="#portfolio" class="btn-secondary">
-          <i class="fa-solid fa-film"></i> View Showreel
+        <a href="https://wa.me/" target="_blank" class="btn-secondary">
+          <i class="fa-brands fa-whatsapp"></i> Chat On WhatsApp
         </a>
       </div>
 
       <!-- Quick Stats Counter -->
-      <div class="hero-stats">
+      <div class="hero-stats" style="max-width: 820px; margin: 0 auto;">
         <div class="stat-item">
           <h3 class="counter-val" data-target="250" data-suffix="+">0+</h3>
           <p>Projects Done</p>
@@ -177,154 +176,53 @@
     </div>
   </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio">
+  <!-- Interactive Category Carousel Showcase (With Arrow Scroll & Lightbox) -->
+  <section class="showcase-section" id="gallery">
     <div class="section-header">
-      <span class="section-subtitle">Visual Experience</span>
-      <h2 class="section-title">Featured Photography</h2>
+      <span class="section-subtitle">Portfolio Cinema</span>
+      <h2 class="section-title">Explore Our Work by Genre</h2>
     </div>
 
-    <!-- Category Filters -->
-    <div class="portfolio-filters">
-      <button class="filter-btn active" data-filter="all">All Projects</button>
-      <button class="filter-btn" data-filter="wedding">Weddings</button>
-      <button class="filter-btn" data-filter="fashion">Fashion & Model</button>
-      <button class="filter-btn" data-filter="cinematic">Cinematic</button>
+    <!-- Category Selector Tabs -->
+    <div class="gallery-tab-wrapper">
+      <button class="gallery-tab-btn active" data-category="marriage">
+        <i class="fa-solid fa-om"></i> Marriage & Rituals
+      </button>
+      <button class="gallery-tab-btn" data-category="wedding">
+        <i class="fa-solid fa-ring"></i> Royal Weddings
+      </button>
+      <button class="gallery-tab-btn" data-category="prewedding">
+        <i class="fa-solid fa-heart"></i> Pre-Wedding
+      </button>
+      <button class="gallery-tab-btn" data-category="fashion">
+        <i class="fa-solid fa-vest-patches"></i> Fashion & Editorial
+      </button>
     </div>
 
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-category="wedding">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Royal Wedding">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">Wedding Moments</span>
-          <h4 class="gallery-title">The Royal Destination Nuptials</h4>
-        </div>
+    <!-- Carousel with Left/Right Navigation Arrows -->
+    <div class="carousel-outer-wrapper">
+      <button class="carousel-nav-btn carousel-prev" id="galleryPrevBtn" aria-label="Scroll Left">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="carousel-track" id="galleryTrack">
+        <!-- Dynamic Cards rendered and filtered via JavaScript -->
       </div>
 
-      <div class="gallery-item" data-category="fashion">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Fashion Portrait">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">Editorial Studio</span>
-          <h4 class="gallery-title">Golden Hour High-Fashion Portrait</h4>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="wedding">
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Pre-Wedding Shoot">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">Cinematic Tale</span>
-          <h4 class="gallery-title">Pre-Wedding Twilight Horizon</h4>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="cinematic">
-        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop" alt="Filmmaking Set">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">On Location</span>
-          <h4 class="gallery-title">Music Video Directorial Set</h4>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="fashion">
-        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" alt="Bridal Shoot">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">Bridal Portraits</span>
-          <h4 class="gallery-title">Grace & Heritage Elegance</h4>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="cinematic">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop" alt="Camera Gear">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">Studio Gear</span>
-          <h4 class="gallery-title">Precision Optics & 8K Cinema</h4>
-        </div>
-      </div>
+      <button class="carousel-nav-btn carousel-next" id="galleryNextBtn" aria-label="Scroll Right">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
   </section>
 
-  <!-- Lightbox Modal -->
+  <!-- Fullscreen Lightbox Modal -->
   <div class="lightbox-modal" id="lightboxModal">
     <div class="lightbox-content">
       <button class="lightbox-close" id="lightboxClose">&times;</button>
-      <img id="lightboxImg" src="" alt="Popup Preview">
+      <img id="lightboxImg" src="" alt="Enlarged Preview">
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
   </div>
-
-  <!-- About Section -->
-  <section id="about">
-    <div class="about-container">
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop" alt="Aakar Films Studio Team">
-      </div>
-      <div class="about-text">
-        <span class="section-subtitle">Behind The Lenses</span>
-        <h3>Passionate Visionaries Transforming Emotion into Cinema</h3>
-        <p>
-          At <strong>Aakar Films</strong>, we believe every frame tells an unrepeatable story. Our production house unites veteran cinematographers, colorists, and creative directors dedicated to producing world-class imagery with heartfelt emotion.
-        </p>
-        <div class="about-features">
-          <div class="feature-point"><i class="fa-solid fa-circle-check"></i> High-End RAW Footage</div>
-          <div class="feature-point"><i class="fa-solid fa-circle-check"></i> Color Calibrated Edits</div>
-          <div class="feature-point"><i class="fa-solid fa-circle-check"></i> Express Delivery</div>
-          <div class="feature-point"><i class="fa-solid fa-circle-check"></i> Pan-India Destination Shoot</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Booking Shoot Form -->
-  <section id="booking" class="booking-section">
-    <div class="booking-card">
-      <div class="section-header" style="margin-bottom: 35px;">
-        <span class="section-subtitle">Reserve Your Date</span>
-        <h2 class="section-title">Book A Shoot Session</h2>
-      </div>
-
-      <form id="bookingForm">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="clientName">Your Full Name / તમારું નામ *</label>
-            <input type="text" id="clientName" class="form-control" placeholder="e.g. Rahul Patel" required>
-          </div>
-
-          <div class="form-group">
-            <label for="clientPhone">Phone Number / મોબાઈલ નંબર *</label>
-            <input type="tel" id="clientPhone" class="form-control" placeholder="e.g. +91 98765 43210" required>
-          </div>
-
-          <div class="form-group">
-            <label for="shootService">Service / શૂટનો પ્રકાર *</label>
-            <select id="shootService" class="form-control" required>
-              <option value="">-- સિલેક્ટ કરો --</option>
-              <option value="Wedding Shoot">Wedding & Destination Nuptials</option>
-              <option value="Pre-Wedding">Pre-Wedding Cinematic</option>
-              <option value="Fashion & Commercial">Fashion & Model Portfolio</option>
-              <option value="Music Video / Short Film">Music Video / Film Production</option>
-              <option value="Product Photography">Product & Brand Shoot</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="shootDate">Event / Shoot Date *</label>
-            <input type="date" id="shootDate" class="form-control" required>
-          </div>
-
-          <div class="form-group full">
-            <label for="clientNotes">Special Requests or Location (વધારાની વિગત)</label>
-            <textarea id="clientNotes" class="form-control" placeholder="Mention venue location, event timeline, or custom concepts..."></textarea>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 15px;">
-          <button type="submit" class="btn-primary" style="padding: 16px 45px;">
-            <i class="fa-solid fa-paper-plane"></i> Confirm & Submit Booking
-          </button>
-        </div>
-      </form>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer>

@@ -1,10 +1,9 @@
 /**
- * Module: Ultra-Cinematic Studio Optics & Camera Aperture VFX Engine
- * Creates a breathtaking visual photoshoot environment:
- * 1. Dynamic Rotating Camera Aperture Blades (matching the Aakar logo)
- * 2. Floating Golden Photography Dust & Bokeh Orbs
- * 3. Interactive Mouse Parallax Lens Flare
- * 4. Pulsing Studio Rim Lights & Camera Focus Reticle
+ * Module: Ultra-Cinematic Studio Optics & Dynamic Lens Flare Engine
+ * - Rich royal gold palette (f3c26b)
+ * - Multi-layered smooth aperture blades
+ * - Floating golden bokeh orbs & light dust
+ * - Viewfinder focus reticle with dynamic parallax
  */
 
 export function initBackgroundVideo() {
@@ -52,64 +51,63 @@ function startUltraCinematicVFX(canvas) {
   window.addEventListener('resize', resize);
   resize();
 
-  // Mouse interaction coordinates
-  let mouse = { x: width * 0.5, y: height * 0.4, targetX: width * 0.5, targetY: height * 0.4 };
+  // Mouse parallax coordinates
+  let mouse = { x: width * 0.5, y: height * 0.45, targetX: width * 0.5, targetY: height * 0.45 };
   window.addEventListener('mousemove', (e) => {
     mouse.targetX = e.clientX;
     mouse.targetY = e.clientY;
   });
 
-  // 1. Golden Bokeh Orbs
-  const bokehs = Array.from({ length: 28 }, () => ({
+  // 1. Royal Golden Bokeh Orbs
+  const bokehs = Array.from({ length: 32 }, () => ({
     x: Math.random() * width,
     y: Math.random() * height,
-    radius: Math.random() * 45 + 15,
-    vx: (Math.random() - 0.5) * 0.4,
+    radius: Math.random() * 50 + 20,
+    vx: (Math.random() - 0.5) * 0.45,
     vy: -Math.random() * 0.5 - 0.2,
-    baseAlpha: Math.random() * 0.18 + 0.05,
-    hue: Math.random() > 0.3 ? 'rgba(229, 179, 100,' : 'rgba(255, 215, 130,'
+    baseAlpha: Math.random() * 0.22 + 0.08,
+    color: Math.random() > 0.4 ? 'rgba(243, 194, 107,' : 'rgba(255, 225, 160,'
   }));
 
-  // 2. Fine Studio Dust Sparkles
-  const sparkles = Array.from({ length: 65 }, () => ({
+  // 2. Fine Golden Studio Sparkles
+  const sparkles = Array.from({ length: 70 }, () => ({
     x: Math.random() * width,
     y: Math.random() * height,
-    size: Math.random() * 2.5 + 0.8,
-    vx: (Math.random() - 0.5) * 0.6,
-    vy: -Math.random() * 0.8 - 0.2,
-    alpha: Math.random() * 0.8 + 0.2,
-    twinkleSpeed: Math.random() * 0.04 + 0.01
+    size: Math.random() * 2.8 + 1,
+    vx: (Math.random() - 0.5) * 0.55,
+    vy: -Math.random() * 0.7 - 0.2,
+    alpha: Math.random() * 0.85 + 0.15,
+    phase: Math.random() * Math.PI * 2
   }));
 
-  // 3. Camera Lens Aperture Ring State
   let apertureAngle = 0;
   let focusPulse = 0;
 
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Smooth mouse parallax interpolation
-    mouse.x += (mouse.targetX - mouse.x) * 0.05;
-    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+    // Smooth mouse interpolation
+    mouse.x += (mouse.targetX - mouse.x) * 0.06;
+    mouse.y += (mouse.targetY - mouse.y) * 0.06;
 
     // --- A. Dynamic Studio Sweeping Spotlight ---
-    focusPulse += 0.015;
+    focusPulse += 0.018;
     const spotX = mouse.x;
     const spotY = mouse.y;
-    const spotRadius = Math.max(width, height) * 0.55;
+    const spotRadius = Math.max(width, height) * 0.6;
 
     const spotGrad = ctx.createRadialGradient(spotX, spotY, 20, spotX, spotY, spotRadius);
-    spotGrad.addColorStop(0, 'rgba(229, 179, 100, 0.14)');
-    spotGrad.addColorStop(0.35, 'rgba(229, 179, 100, 0.04)');
-    spotGrad.addColorStop(0.7, 'rgba(10, 11, 14, 0.02)');
-    spotGrad.addColorStop(1, 'rgba(10, 11, 14, 0)');
+    spotGrad.addColorStop(0, 'rgba(243, 194, 107, 0.16)');
+    spotGrad.addColorStop(0.35, 'rgba(243, 194, 107, 0.05)');
+    spotGrad.addColorStop(0.75, 'rgba(6, 7, 9, 0.02)');
+    spotGrad.addColorStop(1, 'rgba(6, 7, 9, 0)');
     ctx.fillStyle = spotGrad;
     ctx.fillRect(0, 0, width, height);
 
-    // --- B. Majestic Rotating Camera Aperture Rings (Center-Right Backdrop) ---
-    apertureAngle += 0.0025;
-    const apX = width * 0.65;
-    const apY = height * 0.42;
+    // --- B. Majestic Rotating Cinema Aperture Lens (Center-Right Backdrop) ---
+    apertureAngle += 0.0022;
+    const apX = width * 0.68;
+    const apY = height * 0.45;
 
     ctx.save();
     ctx.translate(apX, apY);
@@ -117,61 +115,61 @@ function startUltraCinematicVFX(canvas) {
 
     // Outer Thin Gold Cinema Ring
     ctx.beginPath();
-    ctx.arc(0, 0, 240, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(229, 179, 100, 0.08)';
-    ctx.lineWidth = 1.5;
-    ctx.setLineDash([12, 18]);
+    ctx.arc(0, 0, 260, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(243, 194, 107, 0.12)';
+    ctx.lineWidth = 1.8;
+    ctx.setLineDash([14, 20]);
     ctx.stroke();
 
     // Secondary Focus Ring with degree markers
     ctx.beginPath();
-    ctx.arc(0, 0, 170, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(229, 179, 100, 0.12)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 10]);
+    ctx.arc(0, 0, 185, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(243, 194, 107, 0.16)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([5, 12]);
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // 6 Aperture Blades (Similar to Aakar Logo concept)
+    // 6 Aperture Blades
     const blades = 6;
     for (let i = 0; i < blades; i++) {
       ctx.save();
       ctx.rotate((i * Math.PI * 2) / blades);
       ctx.beginPath();
-      ctx.moveTo(50, 0);
-      ctx.lineTo(130, -35);
-      ctx.lineTo(105, 55);
+      ctx.moveTo(55, 0);
+      ctx.lineTo(145, -40);
+      ctx.lineTo(118, 62);
       ctx.closePath();
-      ctx.fillStyle = 'rgba(229, 179, 100, 0.035)';
+      ctx.fillStyle = 'rgba(243, 194, 107, 0.04)';
       ctx.fill();
-      ctx.strokeStyle = 'rgba(229, 179, 100, 0.12)';
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(243, 194, 107, 0.18)';
+      ctx.lineWidth = 1.2;
       ctx.stroke();
       ctx.restore();
     }
 
     // Central Lens Glow
-    const coreGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, 90);
-    coreGrad.addColorStop(0, 'rgba(229, 179, 100, 0.12)');
-    coreGrad.addColorStop(1, 'rgba(229, 179, 100, 0)');
+    const coreGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, 100);
+    coreGrad.addColorStop(0, 'rgba(243, 194, 107, 0.16)');
+    coreGrad.addColorStop(1, 'rgba(243, 194, 107, 0)');
     ctx.fillStyle = coreGrad;
     ctx.beginPath();
-    ctx.arc(0, 0, 90, 0, Math.PI * 2);
+    ctx.arc(0, 0, 100, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.restore();
 
-    // --- C. Camera Focus Brackets [] in Center ---
-    const bracketSize = 25;
-    const boxW = 120 + Math.sin(focusPulse) * 8;
-    const boxH = 90 + Math.sin(focusPulse) * 6;
-    const focusCenterX = width * 0.5 + (mouse.x - width * 0.5) * 0.08;
-    const focusCenterY = height * 0.45 + (mouse.y - height * 0.45) * 0.08;
+    // --- C. Camera Focus Reticle [] (Viewfinder HUD) ---
+    const bracketSize = 24;
+    const boxW = 125 + Math.sin(focusPulse) * 8;
+    const boxH = 95 + Math.sin(focusPulse) * 6;
+    const focusCenterX = width * 0.48 + (mouse.x - width * 0.48) * 0.08;
+    const focusCenterY = height * 0.48 + (mouse.y - height * 0.48) * 0.08;
 
     ctx.save();
     ctx.translate(focusCenterX, focusCenterY);
-    ctx.strokeStyle = 'rgba(229, 179, 100, 0.22)';
-    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = 'rgba(243, 194, 107, 0.28)';
+    ctx.lineWidth = 1.6;
 
     // Top-left
     ctx.beginPath();
@@ -205,7 +203,7 @@ function startUltraCinematicVFX(canvas) {
     ctx.beginPath();
     ctx.moveTo(-6, 0); ctx.lineTo(6, 0);
     ctx.moveTo(0, -6); ctx.lineTo(0, 6);
-    ctx.strokeStyle = 'rgba(229, 179, 100, 0.35)';
+    ctx.strokeStyle = 'rgba(243, 194, 107, 0.45)';
     ctx.stroke();
 
     ctx.restore();
@@ -220,9 +218,9 @@ function startUltraCinematicVFX(canvas) {
       if (b.x > width + b.radius * 2) b.x = -b.radius * 2;
 
       const g = ctx.createRadialGradient(b.x, b.y, b.radius * 0.1, b.x, b.y, b.radius);
-      g.addColorStop(0, `${b.hue} ${b.baseAlpha * 1.5})`);
-      g.addColorStop(0.7, `${b.hue} ${b.baseAlpha * 0.6})`);
-      g.addColorStop(1, `${b.hue} 0)`);
+      g.addColorStop(0, `${b.color} ${b.baseAlpha * 1.6})`);
+      g.addColorStop(0.65, `${b.color} ${b.baseAlpha * 0.7})`);
+      g.addColorStop(1, `${b.color} 0)`);
 
       ctx.beginPath();
       ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
@@ -230,22 +228,22 @@ function startUltraCinematicVFX(canvas) {
       ctx.fill();
     });
 
-    // --- E. Golden Studio Sparkles & Dust Particles ---
+    // --- E. Golden Studio Sparkles & Ambient Film Grain Particles ---
     sparkles.forEach(s => {
       s.x += s.vx;
       s.y += s.vy;
-      s.alpha += Math.sin(focusPulse * 4 + s.x) * 0.02;
+      s.phase += 0.035;
 
       if (s.y < -10) s.y = height + 10;
       if (s.x < -10) s.x = width + 10;
       if (s.x > width + 10) s.x = -10;
 
-      const currentAlpha = Math.max(0.15, Math.min(0.9, s.alpha));
+      const dynamicAlpha = Math.max(0.18, Math.min(0.95, s.alpha + Math.sin(s.phase) * 0.25));
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(240, 205, 140, ${currentAlpha})`;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = 'rgba(229, 179, 100, 0.7)';
+      ctx.fillStyle = `rgba(243, 194, 107, ${dynamicAlpha})`;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = 'rgba(243, 194, 107, 0.8)';
       ctx.fill();
     });
 
